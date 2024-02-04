@@ -1,73 +1,112 @@
-//script.js//
+/*styles.css*/
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
 
-//Buttons for all numbers and symbols from left to right//
-
-let clear = document.querySelector("#AC");
-let decimal=document.querySelector("#decimal");
-let remainder=document.querySelector("#remainder");
-let division = document.querySelector("#divide" ) ;
-let seven = document.querySelector("#seven" ) ;
-let eight = document.querySelector("#eight" );
-let nine = document.querySelector("#nine" );
-let multiplication = document.querySelector("#multiply");
-let four = document.querySelector("#four" );
-let five = document.querySelector("#five" );
-let six = document.querySelector("#six" );
-let subtraction = document.querySelector("#minus");
-let one = document.querySelector("#one" );
-let two = document.querySelector("#two");
-let three = document.querySelector("#three" );
-let addition = document.querySelector("#add");
-let zero = document.querySelector("#zero" );
-let back = document.querySelector("#back");
-let equalTo = document.querySelector("#equalto");
-
-
-//Event listeners for all buttons//
-clear.addEventListener('click',()=>{console.log("0")})
-decimal.addEventListener('click',()=>{console.log(".")})
-remainder.addEventListener('click',()=>{console.log(3%2)})
-division.addEventListener('click',()=>{console.log(3/2)})
-seven.addEventListener('click',()=>{console.log(7)})
-eight.addEventListener('click',()=>{console.log(8)})
-nine.addEventListener('click',()=>{console.log(9)})
-multiplication.addEventListener('click',()=>{console.log(3*2)})
-four.addEventListener('click',()=>{console.log(4)})
-five.addEventListener('click',()=>{console.log(5)})
-six.addEventListener('click',()=>{console.log(6)})
-subtraction.addEventListener('click',()=>{console.log(3-2)})
-one.addEventListener('click',()=>{console.log(1)})
-two.addEventListener('click',()=>{console.log(2)})
-three.addEventListener('click',()=>{console.log(3)})
-addition.addEventListener('click',()=>{console.log(3+2)})
-zero.addEventListener('click',()=>{console.log(0)})
-back.addEventListener('click',()=>{console.log("delete")})
-equalTo.addEventListener('click',()=>{console.log("equal to")})
-
-
-// Functions for addition,subtraction, multiplication, division & remainder 
-const add = function(firstNumber,secondNumber) {
-	return firstNumber + secondNumber;
-};
-
-const subtract = function(firstNumber,secondNumber) {
-	return firstNumber - secondNumber;
-};
-
-const multiply = function(firstNumber,secondNumber) {
+body{
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#5865f2 ;
+}
+.calculator-body{
+    /* border:3px solid orange; */
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color:#2c2f33 ;
+    width:413px;
+    height:700px;
+    border-radius: 5px; 
+    box-shadow:5px 5px 20px 5px  #464fb2;
+}
+#display-screen{
     
-    return firstNumber * secondNumber
+    display:flex;
+    ;
+    height:202px;
+    background-color: #ffff;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
 
-};
+}
 
-const divide = function(firstNumber,secondNumber) {
+#display-screen > p{
     
-    return firstNumber / secondNumber
+    font-family: sans-serif;
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items:flex-end;
+    font-size: 30px;
+    width:413px;
 
-};
-
-const remaining = function(firstNumber,secondNumber) {
+}
+.buttons-container{  
+    height:570px;
     
-    return firstNumber % secondNumber
+}
+.buttons-inner-container{
+    
+    flex-direction: column;
+    width:500px;
+    
+    
+   
+}
+button{
+    
+    margin-top: 3px;
+    font-size: 25px;
+    font-weight:500;
+    color:#ffff;
+    background-color: #424549;
+    border:none;
 
-};
+    width:100px;
+    height:100px;
+   
+}
+button:hover{
+    background-color: #ffffffb3;
+}
+
+#AC{
+    background-color:rgb(243, 20, 13);
+    
+
+}
+#AC:hover{
+    background-color: rgb(241, 77, 72);
+    color:#ffff;
+}
+
+#zero{
+    width:204.5px;
+    border-bottom-left-radius: 5px;
+}
+#back{
+    background-color:rgb(243, 20, 13);
+
+}
+#back:hover{
+    background-color: rgb(241, 77, 72);
+    color:#ffff;
+}
+
+
+#equalto{
+    background-color: #5865f2;
+    color:#ffff;
+    border-bottom-right-radius: 5px;
+}
+
+#equalto:hover{
+    background-color: #7983ee;
+    
+    
+}
