@@ -120,6 +120,87 @@ equalTo.addEventListener('click',()=>{
 })
 
 
+//Function to process the array consisting of numbers and operators
+
+const processing= function(){  
+    for (let i=0;i<array.length;i++){  // [1,"+"]
+        if (typeof array[i]=='number'&& typeof array[i+1]=='string' && typeof array[i-1]=='undefined'){
+            processedArray.push(array[i])    
+                
+        }
+        
+        // ["+",1]
+        else if (typeof array[i]=='number' && typeof array[i+1]=='undefined' ){ 
+            processedArray.push(array[i]) 
+        }
+
+        // ["+",1,2]
+        else if (typeof array[i]=='number' && typeof array[i+1]=='number' && typeof array[i+2]=='undefined' ){
+            processedArray.push(parseInt(array[i].toString()+array[i+1].toString()))
+            array.splice(i+1,1)
+        }
+        // ["+",1,2,3]
+        else if (typeof array[i]=='number' && typeof array[i+1]=='number' && typeof array[i+2]=='number' && typeof array[i+3]=='undefined' ){
+            processedArray.push(parseInt(array[i].toString()+array[i+1].toString()+ array[i+2].toString()))
+            array.splice(i+1,2)
+        }
+        // ["+",1,2,3,4]
+        else if (typeof array[i]=='number' && typeof array[i+1]=='number' && typeof array[i+2]=='number' && typeof array[i+3]=='number'&& typeof array[i+4]=='undefined' ){
+            processedArray.push(parseInt(array[i].toString()+array[i+1].toString()+ array[i+2].toString()+array[i+3].toString()))
+            array.splice(i+1,3)
+        }
+
+        //following 1 item is number  [3,5,"+"]
+        
+        else if (typeof array[i]=='number' && typeof array[i+1]=='number'&& typeof array[i+2]=='string'){
+            processedArray.push(parseInt(array[i].toString()+array[i+1].toString()))
+            array.splice(i+1,1)
+        }
+
+        //following 2 items are numbers [3,4,5,"+"]
+        
+        else if (typeof array[i]=='number' && typeof array[i+1]=='number' && typeof array[i+2]=='number' && typeof array[i+3]=='string'){
+            processedArray.push(parseInt(array[i].toString()+array[i+1].toString()+array[i+2].toString()))
+            array.splice(i+1,2)
+                
+        }
+        //following 3 items are numbers [3,2,4,5,"+"]
+
+        else if (typeof array[i]=='number' && typeof array[i+1]=='number' && typeof array[i+2]=='number' && typeof array[i+3]=='number' && typeof array[i+4]=='string'){
+            processedArray.push(parseInt(array[i].toString()+array[i+1].toString()+array[i+2].toString()+array[i+3].toString()))
+            array.splice(i+1,3)
+                
+        }
+
+        //following 4 items are numbers [3,2,1,4,5,"+"]
+        else if (typeof array[i]=='number' && typeof array[i+1]=='number'&& typeof array[i+2]=='number'&& typeof array[i+3]=='number'&& typeof array[i+4]=='number' && typeof array[i+5]=='string'){
+            processedArray.push(parseInt(array[i].toString()+array[i+1].toString()+array[i+2].toString()+ array[i+3].toString()+array[i+4].toString()));
+            array.splice(i+1,4);
+        }
+        
+        else if (typeof array[i+1]=='string' && typeof array[i-1]=='string' || typeof array[i-1]=='undefined'){
+            processedArray.push(array[i]);
+        }
+
+        else if (typeof array[i+1]=='string' && typeof array[i-1]=='number' || typeof array[i-1]=='undefined'){
+            processedArray.push(array[i]);
+        }
+                
+
+        else if (array[i]=="." || array[i]=="+" ||array[i]=="-"||array[i]=="*" || array[i]=="/" || array[i]=="%"||array[i]=="="){
+            processedArray.push(array[i]);
+        }
+
+
+        else if (typeof array[0]=='+'||typeof array[0]=='-'||typeof array[0]=='*'||typeof array[0]=='/'
+        ||typeof array[0]=='%'||typeof array[0]=='.'){
+            alert("Invalid format provided")
+            array.length=0;
+        }
+
+    }
+}
+
 // Functions for addition,subtraction, multiplication, division & remainder 
 const add = function(firstNumber,secondNumber) {
 	return firstNumber + secondNumber;
