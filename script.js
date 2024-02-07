@@ -2,6 +2,8 @@
 
 //Buttons for all numbers and symbols from left to right//
 
+//Buttons for all numbers and symbols from left to right//
+
 let clear = document.querySelector("#AC");
 let decimal=document.querySelector("#decimal");
 let remainder=document.querySelector("#remainder");
@@ -23,26 +25,99 @@ let back = document.querySelector("#back");
 let equalTo = document.querySelector("#equalto");
 
 
+//Variables for firstNumber, operator & secondNumber
+let firstNumber;
+let operator;
+let secondNumber;
+
+//Two arrays;   
+let array=[]; // array consist of all the values of buttons clicked
+let processedArray=[] // processedArray will contain all values of array combined together according to various conditions
+
+
 //Event listeners for all buttons//
-clear.addEventListener('click',()=>{console.log("0")})
-decimal.addEventListener('click',()=>{console.log(".")})
-remainder.addEventListener('click',()=>{console.log(3%2)})
-division.addEventListener('click',()=>{console.log(3/2)})
-seven.addEventListener('click',()=>{console.log(7)})
-eight.addEventListener('click',()=>{console.log(8)})
-nine.addEventListener('click',()=>{console.log(9)})
-multiplication.addEventListener('click',()=>{console.log(3*2)})
-four.addEventListener('click',()=>{console.log(4)})
-five.addEventListener('click',()=>{console.log(5)})
-six.addEventListener('click',()=>{console.log(6)})
-subtraction.addEventListener('click',()=>{console.log(3-2)})
-one.addEventListener('click',()=>{console.log(1)})
-two.addEventListener('click',()=>{console.log(2)})
-three.addEventListener('click',()=>{console.log(3)})
-addition.addEventListener('click',()=>{console.log(3+2)})
-zero.addEventListener('click',()=>{console.log(0)})
-back.addEventListener('click',()=>{console.log("delete")})
-equalTo.addEventListener('click',()=>{console.log("equal to")})
+clear.addEventListener('click',()=>{
+    array.length=0
+    console.log(array)
+})
+
+decimal.addEventListener('click',()=>{
+    array.push(".")
+    console.log(array) 
+})
+remainder.addEventListener('click',()=>{
+    array.push("%")
+    console.log(array)
+})
+division.addEventListener('click',()=>{
+    array.push("/")
+    console.log(array)
+})
+
+seven.addEventListener('click',()=>{
+    array.push(7)
+    console.log(array)
+    
+})
+eight.addEventListener('click',()=>{
+    array.push(8)
+    console.log(array)
+})
+nine.addEventListener('click',()=>{
+    array.push(9)
+    console.log(array)
+})
+multiplication.addEventListener('click',()=>{
+    array.push("*")
+    console.log(array)
+})
+
+four.addEventListener('click',()=>{
+    array.push(4)
+    console.log(array)
+})
+five.addEventListener('click',()=>{
+    array.push(5)
+    console.log(array)
+})
+six.addEventListener('click',()=>{
+    array.push(6)
+    console.log(array)
+})
+subtraction.addEventListener('click',()=>{
+    array.push("-")
+    console.log(array)
+})
+one.addEventListener('click',()=>{
+    array.push(1)
+    console.log(array)
+})
+two.addEventListener('click',()=>{
+    array.push(2)
+    console.log(array)
+})
+three.addEventListener('click',()=>{
+    array.push(3)
+    console.log(array)
+})
+addition.addEventListener('click',()=>{
+    array.push("+")
+    console.log(array)
+})
+zero.addEventListener('click',()=>{
+    array.push(0)
+    console.log(array)    
+})
+
+back.addEventListener('click',()=>{
+    array.pop()
+    console.log(array)
+})
+equalTo.addEventListener('click',()=>{
+    array.push("=")
+    console.log(array)
+
+})
 
 
 // Functions for addition,subtraction, multiplication, division & remainder 
