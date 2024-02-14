@@ -1,8 +1,6 @@
 //script.js//
 
-//Buttons for all numbers and symbols from left to right//
-
-//Buttons for all numbers and symbols from left to right//
+//Buttons for all numbers and operators//
 
 let clear = document.querySelector("#AC");
 let decimal=document.querySelector("#decimal");
@@ -24,184 +22,256 @@ let zero = document.querySelector("#zero" );
 let back = document.querySelector("#back");
 let equalTo = document.querySelector("#equalto");
 
+let display= document.querySelector("#display-screen > p")
+
 
 //Variables for firstNumber, operator & secondNumber
 let firstNumber;
 let operator;
 let secondNumber;
 
-//Two arrays;   
-let array=[]; // array consist of all the values of buttons clicked
-let processedArray=[] // processedArray will contain all values of array combined together according to various conditions
+//stringToArray will hold string characters taken from display.innerText as items. 
+let stringToArray=[];
 
 
 //Event listeners for all buttons//
 clear.addEventListener('click',()=>{
-    array.length=0
-    console.log(array)
+    display.style.cssText=("font-size:30px")
+    document.querySelector("#display-screen").style.backgroundColor="#805a6a"
+    display.innerText=" 0 "
+    firstNumber=" "
+    secondNumber=" "  
 })
 
 decimal.addEventListener('click',()=>{
-    array.push(".")
-    console.log(array) 
+    display.style.cssText=("font-size:30px")
+    display.innerText+="."
+    
 })
-remainder.addEventListener('click',()=>{
-    array.push("%")
-    console.log(array)
+
+addition.addEventListener('click',()=>{
+    display.style.cssText=("font-size:30px")
+    display.innerText+=" + "
 })
+
+subtraction.addEventListener('click',()=>{
+    display.style.cssText=("font-size:30px")
+    display.innerText+=" - " 
+   
+})
+
+multiplication.addEventListener('click',()=>{
+    display.style.cssText=("font-size:30px")
+    display.innerText+=" * "
+   
+})
+
 division.addEventListener('click',()=>{
-    array.push("/")
-    console.log(array)
+    display.style.cssText=("font-size:30px")
+    display.innerText+=" / "
+    
+})
+
+remainder.addEventListener('click',()=>{
+    display.style.cssText=("font-size:30px")
+    display.innerText+=" % "
+})
+
+
+zero.addEventListener('click',()=>{  
+    display.style.cssText=("font-size:30px")
+    if (display.innerText=="0"|| display.innerText==="Error"){
+        display.innerText="";
+    }
+    display.innerText+="0"
+})
+
+
+one.addEventListener('click',()=>{
+    display.style.cssText=("font-size:30px")
+    if (display.innerText=="0"|| display.innerText==="Error"){
+        display.innerText="";
+    }
+    display.innerText+="1"  
+})
+
+
+two.addEventListener('click',()=>{
+    display.style.cssText=("font-size:30px")
+    if (display.innerText=="0"|| display.innerText==="Error"){
+        display.innerText="";
+    }
+    display.innerText+="2"   
+})
+
+
+three.addEventListener('click',()=>{
+    display.style.cssText=("font-size:30px")
+    if (display.innerText=="0"|| display.innerText==="Error"){
+        display.innerText="";
+    }
+    display.innerText+="3"
+})
+
+
+four.addEventListener('click',()=>{
+    display.style.cssText=("font-size:30px")
+    if (display.innerText=="0"|| display.innerText==="Error"){
+        display.innerText="";
+    }
+    display.innerText+="4" 
+})
+
+
+five.addEventListener('click',()=>{
+    display.style.cssText=("font-size:30px")
+    if (display.innerText=="0"|| display.innerText==="Error"){
+        display.innerText="";
+    }
+    display.innerText+="5"
+})
+
+
+six.addEventListener('click',()=>{
+    display.style.cssText=("font-size:30px")
+    if (display.innerText=="0"|| display.innerText==="Error"){
+        display.innerText="";
+    }
+    display.innerText+="6"    
 })
 
 seven.addEventListener('click',()=>{
-    array.push(7)
-    console.log(array)
-    
-})
-eight.addEventListener('click',()=>{
-    array.push(8)
-    console.log(array)
-})
-nine.addEventListener('click',()=>{
-    array.push(9)
-    console.log(array)
-})
-multiplication.addEventListener('click',()=>{
-    array.push("*")
-    console.log(array)
+    display.style.cssText=("font-size:30px")
+    if (display.innerText=="0"|| display.innerText==="Error"){
+        display.innerText="";
+    }
+    display.innerText+="7"
+  
 })
 
-four.addEventListener('click',()=>{
-    array.push(4)
-    console.log(array)
+eight.addEventListener('click',()=>{
+    display.style.cssText=("font-size:30px")
+    if (display.innerText=="0"|| display.innerText==="Error"){
+        display.innerText="";
+    }
+    display.innerText+="8"
 })
-five.addEventListener('click',()=>{
-    array.push(5)
-    console.log(array)
+
+
+nine.addEventListener('click',()=>{
+    display.style.cssText=("font-size:30px")
+    if (display.innerText=="0"|| display.innerText==="Error"){
+        display.innerText="";
+    }
+    display.innerText+="9"    
 })
-six.addEventListener('click',()=>{
-    array.push(6)
-    console.log(array)
-})
-subtraction.addEventListener('click',()=>{
-    array.push("-")
-    console.log(array)
-})
-one.addEventListener('click',()=>{
-    array.push(1)
-    console.log(array)
-})
-two.addEventListener('click',()=>{
-    array.push(2)
-    console.log(array)
-})
-three.addEventListener('click',()=>{
-    array.push(3)
-    console.log(array)
-})
-addition.addEventListener('click',()=>{
-    array.push("+")
-    console.log(array)
-})
-zero.addEventListener('click',()=>{
-    array.push(0)
-    console.log(array)    
-})
+
 
 back.addEventListener('click',()=>{
-    array.pop()
-    console.log(array)
-})
-equalTo.addEventListener('click',()=>{
-    array.push("=")
-    console.log(array)
-
-})
-
-
-//Function to process the array consisting of numbers and operators
-
-const processing= function(){  
-    for (let i=0;i<array.length;i++){  // [1,"+"]
-        if (typeof array[i]=='number'&& typeof array[i+1]=='string' && typeof array[i-1]=='undefined'){
-            processedArray.push(array[i])    
-                
-        }
-        
-        // ["+",1]
-        else if (typeof array[i]=='number' && typeof array[i+1]=='undefined' ){ 
-            processedArray.push(array[i]) 
-        }
-
-        // ["+",1,2]
-        else if (typeof array[i]=='number' && typeof array[i+1]=='number' && typeof array[i+2]=='undefined' ){
-            processedArray.push(parseInt(array[i].toString()+array[i+1].toString()))
-            array.splice(i+1,1)
-        }
-        // ["+",1,2,3]
-        else if (typeof array[i]=='number' && typeof array[i+1]=='number' && typeof array[i+2]=='number' && typeof array[i+3]=='undefined' ){
-            processedArray.push(parseInt(array[i].toString()+array[i+1].toString()+ array[i+2].toString()))
-            array.splice(i+1,2)
-        }
-        // ["+",1,2,3,4]
-        else if (typeof array[i]=='number' && typeof array[i+1]=='number' && typeof array[i+2]=='number' && typeof array[i+3]=='number'&& typeof array[i+4]=='undefined' ){
-            processedArray.push(parseInt(array[i].toString()+array[i+1].toString()+ array[i+2].toString()+array[i+3].toString()))
-            array.splice(i+1,3)
-        }
-
-        //following 1 item is number  [3,5,"+"]
-        
-        else if (typeof array[i]=='number' && typeof array[i+1]=='number'&& typeof array[i+2]=='string'){
-            processedArray.push(parseInt(array[i].toString()+array[i+1].toString()))
-            array.splice(i+1,1)
-        }
-
-        //following 2 items are numbers [3,4,5,"+"]
-        
-        else if (typeof array[i]=='number' && typeof array[i+1]=='number' && typeof array[i+2]=='number' && typeof array[i+3]=='string'){
-            processedArray.push(parseInt(array[i].toString()+array[i+1].toString()+array[i+2].toString()))
-            array.splice(i+1,2)
-                
-        }
-        //following 3 items are numbers [3,2,4,5,"+"]
-
-        else if (typeof array[i]=='number' && typeof array[i+1]=='number' && typeof array[i+2]=='number' && typeof array[i+3]=='number' && typeof array[i+4]=='string'){
-            processedArray.push(parseInt(array[i].toString()+array[i+1].toString()+array[i+2].toString()+array[i+3].toString()))
-            array.splice(i+1,3)
-                
-        }
-
-        //following 4 items are numbers [3,2,1,4,5,"+"]
-        else if (typeof array[i]=='number' && typeof array[i+1]=='number'&& typeof array[i+2]=='number'&& typeof array[i+3]=='number'&& typeof array[i+4]=='number' && typeof array[i+5]=='string'){
-            processedArray.push(parseInt(array[i].toString()+array[i+1].toString()+array[i+2].toString()+ array[i+3].toString()+array[i+4].toString()));
-            array.splice(i+1,4);
-        }
-        
-        else if (typeof array[i+1]=='string' && typeof array[i-1]=='string' || typeof array[i-1]=='undefined'){
-            processedArray.push(array[i]);
-        }
-
-        else if (typeof array[i+1]=='string' && typeof array[i-1]=='number' || typeof array[i-1]=='undefined'){
-            processedArray.push(array[i]);
-        }
-                
-
-        else if (array[i]=="." || array[i]=="+" ||array[i]=="-"||array[i]=="*" || array[i]=="/" || array[i]=="%"||array[i]=="="){
-            processedArray.push(array[i]);
-        }
-
-
-        else if (typeof array[0]=='+'||typeof array[0]=='-'||typeof array[0]=='*'||typeof array[0]=='/'
-        ||typeof array[0]=='%'||typeof array[0]=='.'){
-            alert("Invalid format provided")
-            array.length=0;
-        }
-
+    if (display.innerText.length>=2){
+        display.innerText=display.innerText.substring(0,display.innerText.length-1)
     }
-}
+})
 
-// Functions for addition,subtraction, multiplication, division & remainder 
+equalTo.addEventListener('click',()=>{
+    display.style.cssText=("font-size:50px")
+
+    for (let i=0;i<display.innerText.length;i++){
+        if (display.innerText[0]=='+'||
+        display.innerText[0]=='-'||
+        display.innerText[0]=='*'||
+        display.innerText[0]=='/'||
+        display.innerText[0]=='%'){
+            display.style.cssText=("font-size:30px")
+            display.innerText="Invalid format used."
+
+        }
+
+        if (display.innerText[i]=='+'){
+            stringToArray=display.innerText.split('+')
+            firstNumber=Number(stringToArray[0])
+            operator='+'
+            secondNumber=Number(stringToArray[1])
+            display.innerText=""
+            document.querySelector("#display-screen").style.backgroundColor="#9FD4A3"
+            display.innerText=add(firstNumber,secondNumber).toFixed(2)
+            if (display.innerText.length>12){
+                display.style.cssText=("font-size:30px")
+                document.querySelector("#display-screen").style.backgroundColor="#FF7F7F"
+                display.innerText="Error, press AC to reset"
+                alert("Can't enter more than 12 digits")
+            }
+            
+        }
+
+        if (display.innerText[i]=='-'){
+            stringToArray=display.innerText.split('-')
+            firstNumber=Number(stringToArray[0])
+            operator='-'
+            secondNumber=Number(stringToArray[1])
+            display.innerText=""
+            document.querySelector("#display-screen").style.backgroundColor="#9FD4A3"
+            display.innerText=subtract(firstNumber,secondNumber).toFixed(2)
+            if (display.innerText.length>12){
+                display.style.cssText=("font-size:30px")
+                document.querySelector("#display-screen").style.backgroundColor="#FF7F7F"
+                display.innerText="Error, press AC to reset"
+                alert("Can't enter more than 12 digits")
+            }
+        }
+
+        if (display.innerText[i]=='*'){
+            stringToArray=display.innerText.split('*')
+            firstNumber=Number(stringToArray[0])
+            operator='*'
+            secondNumber=Number(stringToArray[1])
+            display.innerText=""
+            document.querySelector("#display-screen").style.backgroundColor="#9FD4A3"
+            display.innerText=multiply(firstNumber,secondNumber).toFixed(2)
+            if (display.innerText.length>12){
+                display.style.cssText=("font-size:30px")
+                document.querySelector("#display-screen").style.backgroundColor="#FF7F7F"
+                display.innerText="Error, press AC to reset"
+                alert("Can't enter more than 12 digits")
+            }
+        }
+
+        if (display.innerText[i]=='/'){
+            stringToArray=display.innerText.split('/')
+            firstNumber=Number(stringToArray[0])
+            operator='/'
+            secondNumber=Number(stringToArray[1])
+            display.innerText=""
+            document.querySelector("#display-screen").style.backgroundColor="#9FD4A3"
+            display.innerText=divide(firstNumber,secondNumber).toFixed(2)
+            if (display.innerText.length>12){
+                display.style.cssText=("font-size:30px")
+                document.querySelector("#display-screen").style.backgroundColor="#FF7F7F"
+                display.innerText="Error, press AC to reset"
+                alert("Can't enter more than 12 digits")
+            }
+        }
+
+        if (display.innerText[i]=='%'){
+            stringToArray=display.innerText.split('%')
+            firstNumber=Number(stringToArray[0])
+            operator='%'
+            secondNumber=Number(stringToArray[1])
+            display.innerText=""
+            document.querySelector("#display-screen").style.backgroundColor="#9FD4A3"
+            display.innerText=remaining(firstNumber,secondNumber).toFixed(2)
+            if (display.innerText.length>12){
+                display.style.cssText=("font-size:30px")
+                document.querySelector("#display-screen").style.backgroundColor="#FF7F7F"
+                display.innerText="Error, press AC to reset"
+                alert("Can't enter more than 12 digits")
+            }
+        }
+    }  
+})
+
+
+//Functions for addition,subtraction, multiplication, division & remainder 
 const add = function(firstNumber,secondNumber) {
 	return firstNumber + secondNumber;
 };
@@ -211,19 +281,21 @@ const subtract = function(firstNumber,secondNumber) {
 };
 
 const multiply = function(firstNumber,secondNumber) {
-    
     return firstNumber * secondNumber
-
 };
 
 const divide = function(firstNumber,secondNumber) {
-    
-    return firstNumber / secondNumber
-
+    if (secondNumber===0){
+        document.querySelector("#display-screen").style.backgroundColor="#FF7F7F"
+        display.style.cssText=("color:#e8e7ec")
+        display.innerText="Can't divide by zero"
+        return display.innerText
+    }
+    else {
+        return firstNumber / secondNumber
+    }
 };
 
 const remaining = function(firstNumber,secondNumber) {
-    
     return firstNumber % secondNumber
-
 };
