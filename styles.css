@@ -10,76 +10,62 @@ body{
     display:flex;
     justify-content: center;
     align-items: center;
-    background-color:#5865f2 ;
+    background-color: #e8e7ec;  
 }
+
 .calculator-body{
-    /* border:3px solid orange; */
     display:flex;
     flex-direction: column;
     justify-content: center;
-    background-color:#2c2f33 ;
-    width:413px;
+    background-color:#94769f ;
+    width:418px;
     height:700px;
     border-radius: 5px; 
-    box-shadow:5px 5px 20px 5px  #464fb2;
+    box-shadow: 0px 10px 30px #918f9a;
 }
+
 #display-screen{
-    
     display:flex;
-    ;
     height:202px;
-    background-color: #ffff;
+    color: #e8e7ec;
+    background-color: #805a6a;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
-
 }
 
 #display-screen > p{
-    
-    font-family: sans-serif;
+    font-family:"Roboto",sans-serif;
     display:flex;
-    flex-wrap: wrap;
+    overflow: hidden;
     justify-content: flex-end;
     flex-direction: column;
     align-items:flex-end;
     font-size: 30px;
     width:413px;
+}
 
-}
-.buttons-container{  
-    height:570px;
-    
-}
+
 .buttons-inner-container{
-    
     flex-direction: column;
     width:500px;
-    
-    
-   
 }
+
 button{
-    
-    margin-top: 3px;
     font-size: 25px;
     font-weight:500;
     color:#ffff;
-    background-color: #424549;
+    background-color: #94769f;
     border:none;
-
+    font-family: "Roboto",sans-serif;
     width:100px;
     height:100px;
-   
 }
+
 button:hover{
     background-color: #ffffffb3;
 }
 
-#AC{
-    background-color:rgb(243, 20, 13);
-    
 
-}
 #AC:hover{
     background-color: rgb(241, 77, 72);
     color:#ffff;
@@ -89,24 +75,28 @@ button:hover{
     width:204.5px;
     border-bottom-left-radius: 5px;
 }
-#back{
-    background-color:rgb(243, 20, 13);
 
-}
 #back:hover{
     background-color: rgb(241, 77, 72);
     color:#ffff;
 }
 
-
 #equalto{
-    background-color: #5865f2;
     color:#ffff;
     border-bottom-right-radius: 5px;
 }
 
-#equalto:hover{
+#decimal:hover{
     background-color: #7983ee;
-    
-    
 }
+
+#decimal:hover,#remainder:hover,#divide:hover, #multiply:hover
+,#minus:hover,#add:hover,#equalto:hover{
+    background-color: #4b1452;
+}
+
+
+
+
+
+
